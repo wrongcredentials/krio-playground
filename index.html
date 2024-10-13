@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krio Playground</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f2f2f2;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #000;
+  }
+
+  input[type="text"],
+  textarea,
+  select {
+    width: calc(100% - 100px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #000;
+  }
+
+  button,
+  input[type="checkbox"],
+  input[type="radio"] {
+    padding: 10px 20px;
+    background-color: #4F52FF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover,
+  input[type="checkbox"]:hover,
+  input[type="radio"]:hover {
+    background-color: #333;
+  }
+
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .row {
+    margin-bottom: 15px;
+  }
+
+  .checkbox-row label {
+    display: inline-block;
+    margin-bottom: 0;
+    margin-right: 15px;
+  }
+
+  .radio-row label {
+    display: inline-block;
+    margin-right: 15px;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Krio Playground</h1>
+
+  <div class="row">
+    <label for="textInput">Input:</label>
+    <input type="text" id="textInput">
+  </div>
+
+  <div class="row">
+    <label for="textareaInput">Textarea:</label>
+    <textarea id="textareaInput" rows="4"></textarea>
+  </div>
+
+  <div class="row">
+    <button id="button" onclick="clearInput()">Button</button>
+    <button id="disabledButton" disabled>Disabled Button</button>
+    <button id="hiddenButton" style="display:none;">Hidden Button</button>
+  </div>
+
+  <div class="row checkbox-row">
+    <input type="checkbox" id="showHidden" onchange="toggleHiddenButton()">
+    <label for="showHidden">Show hidden</label>
+  </div>
+
+  <div class="row radio-row">
+    <input type="radio" id="disabledRadio" name="buttonState" value="disabled" checked onchange="toggleDisabledButton()">
+    <label for="disabledRadio">Disabled</label>
+    <input type="radio" id="enabledRadio" name="buttonState" value="enabled" onchange="toggleDisabledButton()">
+    <label for="enabledRadio">Enabled</label>
+  </div>
+
+  <div class="row">
+    <label for="dropdown">Dropdown:</label>
+    <select id="dropdown">
+      <option value="option1">Option 1</option><option value="option2">Option 2</option>
+    </select>
+  </div>
+
+</div>
+
+<script>
+  function toggleHiddenButton() {
+    var showHiddenCheckbox = document.getElementById("showHidden");
+    var hiddenButton = document.getElementById("hiddenButton");
+    hiddenButton.style.display = showHiddenCheckbox.checked ? "inline-block" : "none";
+  }
+
+  function toggleDisabledButton() {
+    var enabledRadio = document.getElementById("enabledRadio");
+    var disabledButton = document.getElementById("disabledButton");
+    disabledButton.disabled = !enabledRadio.checked;
+  }
+
+  function clearInput() {
+    document.getElementById("textInput").value = '';
+  }
+</script>
+
+</body>
+</html>
